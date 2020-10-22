@@ -74,9 +74,12 @@ function createRandomNamedEvents(request, response) {
     }
 
     response.write(`id: ${eventsSent < 10 ? '0' : ''}${eventsSent}\n`);
+    
+    response.write(createRandomCatFactMessage());
+        eventsSent += 1;
 
+    /*
     const msgType = getRandomIndex(0, 3);
-
     switch (msgType) {
       case 0:
         response.write(createCoinTossMessage());
@@ -95,6 +98,8 @@ function createRandomNamedEvents(request, response) {
         eventsSent += 1;
         break;
     }
+    */
+
   }, 3000);
 
   request.on('close', () => {

@@ -16,22 +16,22 @@
         >
           <!-- ERROR: put several virtual scroll -->
           <v-virtual-scroll
+            bench="15"
             :items="messages"
-            height="300"
-            item-height="0"
+            height="400"
+            item-height="88"
           >
-            
-              <v-list-item 
-                v-for="message in messages"
-                :key="message.lastEventId">
-
-                <v-list-item-content>
-                  <v-list-item-title>
-                    {{ message.data }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
+            <v-list three-line>
+              <template v-for="message in messages">
+                <v-list-item
+                  :key="message.lastEventId"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title v-html="message.data"></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </template>
+            </v-list>
           </v-virtual-scroll>
         </v-card>
       </v-col>
@@ -79,7 +79,7 @@
           console.log(e);
         }
 
-        eventSource.addEventListener('meme', (e) => {
+        eventSource.addEventListener('catFact', (e) => {
           console.log(e);
           this.messages.push(e);
         });
@@ -96,7 +96,7 @@
           this.messages.push(e);
         });
 
-        eventSource.addEventListener('catFact', (e) => {
+        eventSource.addEventListener('meme', (e) => {
           console.log(e);
           this.messages.push(e);
         });

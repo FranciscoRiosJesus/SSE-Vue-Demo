@@ -18,6 +18,7 @@ npm start
 
 ```
 cd src/vue-client
+npm install
 npm run serve
 ```
 
